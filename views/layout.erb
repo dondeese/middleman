@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API-form Rails</title>
+    <link rel="stylesheet" href="mystyle.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <%# Carga la API de JavaScript. %>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeOUAAnAAAAAExRNyFtBdd8PBBKM6s0MPrOImmA"></script>
+    <%#Función de devolución de llamada para controlar el token%>
+    <script>
+      function onSubmit(token) {
+        document.getElementById("contact-form").submit();
+      }
+    </script>
+
+</head>
+<body>
+  <%= erb :navbar %> 
+<div class="content">
+  <h1 class="title is-1">Integración API Form - Rails</h1>
+  <p>API de gestión de datos de formularios de contacto<br/>La aplicación se utiliza para enviar datos, alojándolos en hojas de cálculo de Google y a través de correo electrónico</p>
+</div>
+<form id="contact-form" action="https://apiforms.codingchickens.com/form-submit" method="post">
+  <div class="center">
+      <div class="control" style="padding:10px; border-radius:16px">
+          <input id="nombre" name="first_name" placeholder="Nombre" class="input">
+      </div>
+      <div class="control" style="padding:10px; border-radius:16px">
+        <input id="apellido" name="last_name" placeholder="Apellido" class="input">
+    </div>
+      <div class="control" style="padding:10px; border-radius:16px">
+          <input id="telefono" name="phone_number" placeholder="Teléfono" class="input">
+      </div>
+      <div class="control" style="padding:10px; border-radius:16px">
+          <input id="email" name="email" placeholder="Email" class="input">
+      </div>
+      <div class="field">
+</div>
+  </div>
+  <div>
+      <div>
+          <textarea id="content" name="content" placeholder="¡Escribe tu mensaje!" class="textarea" style="padding:10px; border-radius:16px"></textarea>
+      </div>
+      <div>
+      <button class="g-recaptcha" 
+        data-sitekey="6LeOUAAnAAAAAAGHhiROLc5c1JwhYrHCVq1gwtN8" 
+        data-callback='onSubmit' 
+        data-action='submit'>Enviar</button>
+      </div>
+  </div>
+</form>
+</body>
+</html>
